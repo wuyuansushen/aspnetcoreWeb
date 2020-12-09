@@ -28,3 +28,4 @@ Environment=ASPNETCORE_ENVIRONMENT=Production
 [Install]
 WantedBy=multi-user.target
 ```
+> :warning:Create directory **store** and **wwwroot** manually in `/var/www/publish/` by yourself
