@@ -30,4 +30,4 @@ WantedBy=multi-user.target
 ```
 > :warning:Create directory **store** and **wwwroot** manually in `/var/www/publish/` by yourself
 
-> :zany_face: `/var/www/publish` need **500** premission, change owner to **apache** and change security context to **unconfined_u:object_r:httpd_sys_content_t:s0**
+> :zany_face: `/var/www/publish` need **r-x** premission of user **apache** at least and change security context to **unconfined_u:object_r:httpd_sys_content_t:s0**
