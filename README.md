@@ -30,7 +30,7 @@ WantedBy=multi-user.target
 ```
 > :warning:Create directory **store** and **wwwroot** manually in `/var/www/publish/` by yourself
 
-## 4.(Optional)Configure SELinux
+## 4. (Optional) Configure SELinux
 
 Install `semanage`
 ```
