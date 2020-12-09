@@ -48,5 +48,4 @@ Apply new Contents SELinux Types
 restorecon -R -v /var/www/publish
 ```
 
-
-> :zany_face: `/var/www/publish` need **r-x** premission of user **apache** at least.
+> :zany_face: `/var/www/publish` need **r-x** premission for user **apache** at least.
