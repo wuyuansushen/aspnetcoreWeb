@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.FileProviders;
@@ -32,9 +33,13 @@ namespace aspnetcoreWeb
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
+            //Add .apk file support
+            var ExtProvider = new FileExtensionContentTypeProvider();
+            ExtProvider.Mappings[".apk"] = "application/vnd.android.package-archive";
+
             string locationPath = env.ContentRootPath + @"/store";
             var fileLocation = new PhysicalFileProvider(locationPath);
-            app.UseStaticFiles(new StaticFileOptions() { RequestPath =(PathString)"/ftp", FileProvider=fileLocation });
+            app.UseStaticFiles(new StaticFileOptions() { RequestPath =(PathString)"/ftp", FileProvider=fileLocation,ContentTypeProvider=ExtProvider});
             app.UseDirectoryBrowser(options:(new DirectoryBrowserOptions() { RequestPath="/ftp",FileProvider=fileLocation}));
 
             app.UseRouting();
