@@ -7,6 +7,6 @@ namespace aspnetcoreWeb
 {
     public interface IIpReflection
     {
-        public XForward GetIp();
+        public string GetIp();
     }
 }

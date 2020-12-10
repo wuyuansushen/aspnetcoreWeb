@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using System.Text.Json;
 
 namespace aspnetcoreWeb
 {
@@ -13,7 +14,7 @@ namespace aspnetcoreWeb
         {
             _httpContextAccessor = httpContextAccessor;
         }
-        public XForward GetIp()
+        public string GetIp()
         {
             var headerPairs = _httpContextAccessor.HttpContext.Request.Headers;
             string XForIP = headerPairs["X-Forwarded-For"];
@@ -22,7 +23,8 @@ namespace aspnetcoreWeb
             else
                 XForIP = (XForIP.Split(','))[0];
             XForward forJson = new XForward() { ip = XForIP };
-            return forJson;
+            var jsonOut = JsonSerializer.Serialize<XForward>(forJson,options:(new JsonSerializerOptions{WriteIndented=true}));
+            return jsonOut;
         }
     }
 }

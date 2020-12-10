@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Text.Json;
 
 namespace aspnetcoreWeb
 {
@@ -30,10 +29,12 @@ namespace aspnetcoreWeb
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseDefaultFiles();
             app.UseStaticFiles();
+
             string locationPath = env.ContentRootPath + @"/store";
             var fileLocation = new PhysicalFileProvider(locationPath);
-            app.UseStaticFiles(new StaticFileOptions() { RequestPath = "/ftp", FileProvider=fileLocation });
+            app.UseStaticFiles(new StaticFileOptions() { RequestPath =(PathString)"/ftp", FileProvider=fileLocation });
             app.UseDirectoryBrowser(options:(new DirectoryBrowserOptions() { RequestPath="/ftp",FileProvider=fileLocation}));
 
             app.UseRouting();
@@ -42,9 +43,7 @@ namespace aspnetcoreWeb
             {
                 endpoints.MapGet("/ip", async context =>
                 {
-                    var XForInfo = ipInfo.GetIp();
-                    var jsonOut = JsonSerializer.Serialize<XForward>(XForInfo,options:(new JsonSerializerOptions{WriteIndented=true}));
-                    await context.Response.WriteAsync(jsonOut);
+                    await context.Response.WriteAsync(ipInfo.GetIp());
                 });
             });
         }
