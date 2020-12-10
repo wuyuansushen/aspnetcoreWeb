@@ -20,6 +20,7 @@ namespace aspnetcoreWeb
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseUrls("http://127.0.0.1:5000");
                     webBuilder.UseStartup<Startup>();
                 });
     }
