@@ -30,4 +30,22 @@ WantedBy=multi-user.target
 ```
 > :warning:Create directory **store** and **wwwroot** manually in `/var/www/publish/` by yourself
 
-> :zany_face: `/var/www/publish` need **500** premission, change owner to **apache** and change security context to **unconfined_u:object_r:httpd_sys_content_t:s0**
+## 4. (Optional) Configure SELinux
+
+Install `semanage`
+```
+dnf -y install policycoreutils-python-utils
+```
+
+Change the Diretory and its Contents SELinux Types
+
+```
+semanage fcontext -a -t httpd_sys_content_t "/var/www/publish(/.*)?"
+```
+
+Apply new Contents SELinux Types
+```
+restorecon -R -v /var/www/publish
+```
+
+> :zany_face: `/var/www/publish` need **r-x** premission for user **apache** at least.
