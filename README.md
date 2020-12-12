@@ -14,7 +14,7 @@ ProxyPassReverse "http://127.0.0.1:5000/"
 
 ## 3.Configure systemd service
 
-Add service file `/etc/systemd/system/aspnetcoreWeb.service`
+Add service file `/etc/systemd/system/aspnetcoreWeb.service`.
 
 ```
 [Unit]
@@ -32,7 +32,7 @@ Environment=ASPNETCORE_ENVIRONMENT=Production
 WantedBy=multi-user.target
 ```
 
-> :zany_face: `/etc/systemd/system/aspnetcoreWeb.service` need **r-x** premission.
+> :zany_face: Service file `/etc/systemd/system/aspnetcoreWeb.service` need **r-x** premission.
 
 > :warning:Create directory **store** and **wwwroot** manually in `/var/www/publish/` by yourself
 
