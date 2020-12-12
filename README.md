@@ -13,6 +13,9 @@ ProxyPassReverse "http://127.0.0.1:5000/"
 ```
 
 ## 3.Configure systemd service
+
+Add service file `/etc/systemd/system/aspnetcoreWeb.service`
+
 ```
 [Unit]
 Description=.NET Web App running on CentOS 8
@@ -28,6 +31,9 @@ Environment=ASPNETCORE_ENVIRONMENT=Production
 [Install]
 WantedBy=multi-user.target
 ```
+
+> :zany_face: `/etc/systemd/system/aspnetcoreWeb.service` need **r-x** premission.
+
 > :warning:Create directory **store** and **wwwroot** manually in `/var/www/publish/` by yourself
 
 ## 4. (Optional) Configure SELinux
