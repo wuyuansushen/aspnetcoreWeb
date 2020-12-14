@@ -90,3 +90,10 @@ Package all Directories under project exclude these three directories( `bin`, `o
 ```
 cp -r <Directories> <ProjectLocation>\bin\Release\net5.0\publish\
 ```
+
+### 5.3 SELinux Configuration
+Allow Apache proxy/proxyreverse function to Kestrel web server( Implemented in ASP.NET Core )
+
+```
+setsebool -P httpd_can_network_connect 1
+```
