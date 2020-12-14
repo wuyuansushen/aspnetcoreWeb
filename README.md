@@ -55,3 +55,31 @@ restorecon -R -v /var/www/publish
 ```
 
 > :zany_face: `/var/www/publish` need **r-x** premission for user **apache** at least.
+
+## 5.Troubleshoot
+
+### 5.1 Framework version
+Check Server Framework version
+
+```
+dotnet --info
+```
+
+Check framework version of published project in `<application>.runtimeconfig.json`file under published directory
+
+>:warning: Modify value of `runtimeOptions.framework.version` from `"5.0.0"` to `"5.0.0-preview.8.20414.8"`
+```
+{
+  "runtimeOptions": {
+    "tfm": "net5.0",
+    "framework": {
+      "name": "Microsoft.AspNetCore.App",
+      "version": "5.0.0"
+    },
+    "configProperties": {
+      "System.GC.Server": true,
+      "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": false
+    }
+  }
+}
+```
