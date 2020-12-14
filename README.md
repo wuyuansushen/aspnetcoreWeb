@@ -67,7 +67,7 @@ dotnet --info
 
 Check framework version of published project in `<application>.runtimeconfig.json`file under published directory
 
->:warning: Modify value of `runtimeOptions.framework.version` from `"5.0.0"` to `"5.0.0-preview.8.20414.8"`( shown in `dotnet --info` )
+>:warning: Modify value of `runtimeOptions.framework.version` from `"5.0.0"` to `"5.0.0-preview.8.20414.8"`( shown by `dotnet --info` )
 ```
 {
   "runtimeOptions": {
