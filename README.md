@@ -83,3 +83,9 @@ Check framework version of published project in `<application>.runtimeconfig.jso
   }
 }
 ```
+
+### 5.2 Package Content Directory
+Package all Directories under project exclude these three directories( `bin`, `obj`, `Properties` )
+
+```
+```
