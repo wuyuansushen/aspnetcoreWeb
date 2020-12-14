@@ -84,8 +84,9 @@ Check framework version of published project in `<application>.runtimeconfig.jso
 }
 ```
 
-### 5.2 Package Content Directory
+### 5.2 Package Content Directory together
 Package all Directories under project exclude these three directories( `bin`, `obj`, `Properties` )
 
 ```
+cp -r <Directories> <ProjectLocation>\bin\Release\net5.0\publish\
 ```
